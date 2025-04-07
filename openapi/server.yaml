@@ -563,19 +563,19 @@ components:
         - online
         - offline
       default: unknown
+    DeviceMode:
+      title: DeviceMode
+      x-stoplight:
+        id: 1d61hvywf11ct
+      enum:
+        - manual
+        - auto
+      default: manual
     Device:
       title: Device
       type: object
       x-stoplight:
         id: 13o9yv0te806w
-      required:
-        - id
-        - name
-        - description
-        - uri
-        - type
-        - role
-        - status
       properties:
         id:
           type: string
@@ -593,10 +593,6 @@ components:
           x-stoplight:
             id: 7ojd61u5w0u8g
           format: uri
-        type:
-          type: string
-          x-stoplight:
-            id: k73332rimtuyg
         role:
           $ref: '#/components/schemas/DeviceRole'
           x-stoplight:
@@ -605,6 +601,18 @@ components:
           $ref: '#/components/schemas/DeviceStatus'
           x-stoplight:
             id: 2d92forwvum1e
+        mode:
+          $ref: '#/components/schemas/DeviceMode'
+          x-stoplight:
+            id: f4otnests6fs1
+      required:
+        - id
+        - name
+        - description
+        - uri
+        - role
+        - status
+        - mode
     Cell:
       title: Cell
       type: object
@@ -653,13 +661,6 @@ components:
       x-stoplight:
         id: af4rffinypchj
       type: object
-      required:
-        - id
-        - name
-        - description
-        - uri
-        - type
-        - role
       properties:
         id:
           type: string
@@ -677,14 +678,16 @@ components:
           x-stoplight:
             id: bmec6pqoij9ui
           format: uri
-        type:
-          type: string
-          x-stoplight:
-            id: g104uanwf6e9g
         role:
           $ref: '#/components/schemas/DeviceRole'
           x-stoplight:
             id: yv044mpykfy7g
+      required:
+        - id
+        - name
+        - description
+        - uri
+        - role
     UpdateDevice:
       title: UpdateDevice
       x-stoplight:
