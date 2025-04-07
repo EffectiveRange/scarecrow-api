@@ -12,11 +12,12 @@ info:
     url: 'https://www.effective-range.com'
   license:
     name: MIT
-    url: >-
-      https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE
+    url: 'https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE'
 tags:
+  - name: cell
+    description: Cell
   - name: device
-    description: Edge device
+    description: Device
   - name: diagnostics
     description: Diagnostics
   - name: health
@@ -171,6 +172,94 @@ paths:
       x-stoplight:
         id: cttycfhcua44e
       description: Initiate device discovery
+  /cell:
+    post:
+      summary: Add cell
+      tags:
+        - cell
+      responses:
+        '201':
+          description: Added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cell'
+        '400':
+          description: Bad Request
+      operationId: add-cell
+      description: Add a cell
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/NewCell'
+              x-stoplight:
+                id: 02eybj6tzth5b
+      x-stoplight:
+        id: buektbsib84e7
+    get:
+      summary: Get cells
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  $ref: '#/components/schemas/Cell'
+                  x-stoplight:
+                    id: erozd2cuyz9xa
+      operationId: get-cells
+      description: Get all cells
+      x-stoplight:
+        id: iz17j1i00lf38
+  '/cell/{id}':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: id
+        in: path
+        required: true
+        description: Cell ID
+    get:
+      summary: Get cell
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Cell'
+                x-stoplight:
+                  id: i78t3m4y5oce5
+        '404':
+          description: Not Found
+      operationId: get-cell
+      description: Get a cell by ID
+      x-stoplight:
+        id: g7oyzelo3jbcm
+    delete:
+      summary: Delete cell
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: delete-cell
+      description: Delete a cell by ID
+      x-stoplight:
+        id: rbh5zchbikuhp
   /diagnostics:
     get:
       summary: Get diagnostics
@@ -516,6 +605,49 @@ components:
           $ref: '#/components/schemas/DeviceStatus'
           x-stoplight:
             id: 2d92forwvum1e
+    Cell:
+      title: Cell
+      type: object
+      x-stoplight:
+        id: ig29d6ko7lff6
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: o6j8o8wb37y8d
+          format: uuid
+        name:
+          type: string
+          x-stoplight:
+            id: o5ikh4ton9h9b
+        description:
+          type: string
+          x-stoplight:
+            id: h5qwn5vts974u
+        cannon_ids:
+          type: array
+          x-stoplight:
+            id: s2ohwahg1qezf
+          items:
+            x-stoplight:
+              id: uo4fbeibl26v8
+            type: string
+            format: uuid
+        camera_ids:
+          type: array
+          x-stoplight:
+            id: dntm94yvxn5ar
+          items:
+            x-stoplight:
+              id: 4hckrpjdt07fm
+            type: string
+            format: uuid
+      required:
+        - id
+        - name
+        - description
+        - cannon_ids
+        - camera_ids
     NewDevice:
       title: NewDevice
       x-stoplight:
@@ -575,6 +707,43 @@ components:
           $ref: '#/components/schemas/DeviceRole'
           x-stoplight:
             id: yv044mpykfy7g
+    NewCell:
+      title: NewCell
+      x-stoplight:
+        id: wucmo97w4s7tg
+      type: object
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: dmayhtzkgw51z
+        description:
+          type: string
+          x-stoplight:
+            id: u71q73xtiskzj
+        cannon_ids:
+          type: array
+          x-stoplight:
+            id: 0eb9rtxaex3l1
+          items:
+            x-stoplight:
+              id: 2479bd38l1y9g
+            type: string
+            format: uuid
+        camera_ids:
+          type: array
+          x-stoplight:
+            id: wosg75s0rjvg8
+          items:
+            x-stoplight:
+              id: ywqx4nesyy6ij
+            type: string
+            format: uuid
+      required:
+        - name
+        - description
+        - cannon_ids
+        - camera_ids
     DiagnosticType:
       title: DiagnosticType
       x-stoplight:
