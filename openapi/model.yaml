@@ -1,0 +1,52 @@
+openapi: 3.1.0
+x-stoplight:
+  id: uwrhkes2u0iwi
+info:
+  version: 0.1.0
+  title: Common models
+  summary: Scarecrow common models
+  description: Common models for the Scarecrow system
+  contact:
+    name: Effective Range
+    email: info@effective-range.com
+    url: 'https://www.effective-range.com'
+  license:
+    name: MIT
+    url: >-
+      https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE
+tags:
+  - name: common
+    description: Common model
+paths: {}
+components:
+  schemas:
+    ErrorCode:
+      title: ErrorCode
+      x-stoplight:
+        id: ug1t94il3tjdw
+      enum:
+        - unknown
+        - unreachable
+        - status_expired
+        - no_session
+        - invalid_argument
+        - internal_error
+        - local_error
+        - invalid_state
+      default: unknown
+    Error:
+      title: Error
+      x-stoplight:
+        id: 01dewxhc5cwwt
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+          x-stoplight:
+            id: lqu171esxd1as
+        reason:
+          type: string
+          x-stoplight:
+            id: n9czjx5984kqd

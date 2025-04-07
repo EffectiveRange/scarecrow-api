@@ -1,0 +1,114 @@
+openapi: 3.1.0
+x-stoplight:
+  id: 1ef5liq8sojfl
+info:
+  version: 0.1.0
+  title: Health API
+  summary: Scarecrow health API
+  description: Component health API for the Scarecrow system
+  contact:
+    name: Effective Range
+    email: info@effective-range.com
+    url: 'https://www.effective-range.com'
+  license:
+    name: MIT
+    url: >-
+      https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE
+tags:
+  - name: health
+    description: Component health
+paths:
+  /health/alive:
+    post:
+      summary: Signal component is alive
+      tags:
+        - health
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Bad Request
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: ./model.yaml#/components/schemas/Error
+                x-stoplight:
+                  id: lmdkby3eqlb0u
+      operationId: health-alive
+      x-stoplight:
+        id: r03pcuc9160kg
+      description: Component signals it is alive on the network
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Component'
+    parameters: []
+  /health/status:
+    post:
+      summary: Signal component health status
+      tags:
+        - health
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Bad Request
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: ./model.yaml#/components/schemas/Error
+                x-stoplight:
+                  id: 9781jr1fdk6ii
+      operationId: health-status
+      x-stoplight:
+        id: dbcce2e7sohgc
+      description: Component signals its health status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Component'
+    parameters: []
+components:
+  schemas:
+    Component:
+      title: Component
+      x-stoplight:
+        id: 1zhfrduvc0uq9
+      type: object
+      required:
+        - id
+        - uri
+        - status_period
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 562bzdp0q4ewz
+          format: uuid
+        uri:
+          type: string
+          x-stoplight:
+            id: kxecarekry8sx
+          format: uri
+        status_period:
+          type: integer
+          x-stoplight:
+            id: 4f5i0f5zrpel8
+        session_id:
+          type: string
+          x-stoplight:
+            id: opbm24yzurz8m
+          format: uuid
+        error:
+          type: object
+          $ref: ./model.yaml#/components/schemas/Error
+          x-stoplight:
+            id: pmb5jshe2p431

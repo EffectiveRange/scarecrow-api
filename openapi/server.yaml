@@ -1,0 +1,848 @@
+openapi: 3.1.0
+x-stoplight:
+  id: 5ovzb2epbdb9w
+info:
+  version: 0.1.0
+  title: Server API
+  summary: Scarecrow server API
+  description: Backend server API for the Scarecrow system
+  contact:
+    name: Effective Range
+    email: info@effective-range.com
+    url: 'https://www.effective-range.com'
+  license:
+    name: MIT
+    url: >-
+      https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE
+tags:
+  - name: device
+    description: Edge device
+  - name: diagnostics
+    description: Diagnostics
+  - name: health
+    description: Component health
+  - name: playbook
+    description: ansible playbook
+  - name: statistics
+    description: Statistics
+paths:
+  /device:
+    post:
+      summary: Add device
+      tags:
+        - device
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '400':
+          description: Bad Request
+      operationId: add-device
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/NewDevice'
+              x-stoplight:
+                id: vvcvs8w2w7o7a
+      description: Add a new device
+      x-stoplight:
+        id: 7bfsn9afk15wv
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  $ref: '#/components/schemas/Device'
+                  x-stoplight:
+                    id: abcmmiprxys8j
+      operationId: get-devices
+      summary: Get devices
+      description: Get a list of all devices
+      tags:
+        - device
+      x-stoplight:
+        id: ckiqjcapw19uw
+    parameters: []
+  /device/active:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  $ref: '#/components/schemas/Device'
+                  x-stoplight:
+                    id: t5n14euu6qbhq
+      operationId: get-active-devices
+      summary: Get active devices
+      description: Get a list of currently active devices
+      tags:
+        - device
+      x-stoplight:
+        id: pwaj3yagrc469
+    parameters: []
+  '/device/{id}':
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Device'
+                x-stoplight:
+                  id: t7utcz7ig651g
+        '404':
+          description: Not Found
+      operationId: get-device
+      summary: Get device
+      description: Get a device by ID
+      tags:
+        - device
+      x-stoplight:
+        id: fe8lz1tdfr7z6
+    put:
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '404':
+          description: Not Found
+      operationId: update-device
+      summary: Update device
+      description: Update device parameters
+      tags:
+        - device
+      x-stoplight:
+        id: moaj4rwgg18u1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDevice'
+    delete:
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: delete-device
+      summary: Delete device
+      description: Delete a device by ID
+      tags:
+        - device
+      x-stoplight:
+        id: db7f2eimx75te
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: id
+        in: path
+        required: true
+        description: Device ID
+  /device/discover:
+    post:
+      summary: Discover devices
+      tags:
+        - device
+      responses:
+        '200':
+          description: OK
+      operationId: discover-devices
+      x-stoplight:
+        id: cttycfhcua44e
+      description: Initiate device discovery
+  /diagnostics:
+    get:
+      summary: Get diagnostics
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiagnosticEntry'
+                  x-stoplight:
+                    id: hwnr0sapbvwyo
+      operationId: get-diagnostics
+      x-stoplight:
+        id: kgz3oj3qw0hqn
+      description: Get all diagnostic entries
+    delete:
+      summary: Clear diagnostics
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: OK
+      operationId: clear-diagnostics
+      x-stoplight:
+        id: bfpeydokyszgk
+      description: Delete all diagnostic entries
+    parameters:
+      - schema:
+          type: object
+          $ref: '#/components/schemas/DiagnosticType'
+        in: query
+        name: type
+        description: Diagnostic type
+      - schema:
+          type: string
+          format: uuid
+        in: query
+        name: server_id
+        description: Server ID
+      - schema:
+          type: string
+          format: uuid
+        in: query
+        name: device_id
+        description: Device ID
+      - schema:
+          type: string
+          format: uuid
+        in: query
+        name: session_id
+        description: Session ID
+      - schema:
+          type: string
+          format: uuid
+        in: query
+        name: token_id
+        description: Token ID
+  /statistics:
+    get:
+      summary: Get statistics
+      tags:
+        - statistics
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StatisticEntry'
+                  x-stoplight:
+                    id: zgcgw5cwzkr86
+      operationId: get-statistics
+      x-stoplight:
+        id: w90e9xve8yf8k
+      description: Get all statistic entries
+    delete:
+      summary: Clear statistics
+      tags:
+        - statistics
+      responses:
+        '200':
+          description: OK
+      operationId: delete-statistics
+      x-stoplight:
+        id: ueezp4gkpmdlf
+      description: Delete all statistic entries
+    parameters:
+      - schema:
+          type: object
+          $ref: '#/components/schemas/StatisticType'
+        in: query
+        name: type
+        description: Statistic type
+      - schema:
+          type: object
+          $ref: '#/components/schemas/StatisticSource'
+        in: query
+        name: source
+        description: Statistic source
+      - schema:
+          type: string
+          format: uuid
+        in: query
+        name: device_id
+        description: Device ID
+      - schema:
+          type: string
+          format: uuid
+        in: query
+        name: session_id
+        description: Session ID
+      - schema:
+          type: string
+          format: uuid
+        in: query
+        name: peer_id
+        description: Peer device ID
+      - schema:
+          type: string
+          format: uuid
+        in: query
+        name: token_id
+        description: Token ID
+  /ansible/playbook:
+    get:
+      summary: Get playbooks
+      tags:
+        - playbook
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Playbook'
+                  x-stoplight:
+                    id: ubel6kxsx0hgf
+      operationId: get-ansible-playbooks
+      x-stoplight:
+        id: atsvwbizwbz47
+      description: Get all Ansible playbooks
+    post:
+      summary: Add playbook
+      tags:
+        - playbook
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playbook'
+        '400':
+          description: Bad Request
+      operationId: add-ansible-playbook
+      x-stoplight:
+        id: rh6lni10dle4s
+      description: Add new Ansible playbook
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: object
+              properties: {}
+  /ansible/playbook/yaml:
+    get:
+      summary: Get playbook YAMLs
+      tags:
+        - playbook
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-ansible-playbook-yamls
+      description: Get all Ansible playbooks as YAML
+      x-stoplight:
+        id: uksu6j8h7b1rn
+  '/ansible/playbook/{id}':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: id
+        in: path
+        required: true
+        description: Playbook ID
+    get:
+      summary: Get playbook
+      tags:
+        - playbook
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playbook'
+        '404':
+          description: Not Found
+      operationId: get-ansible-playbook
+      x-stoplight:
+        id: 6acjdisjszx7h
+      description: Get Ansible playbook by ID
+    post:
+      summary: Run playbook
+      tags:
+        - playbook
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      operationId: run-ansible-playbook
+      description: Run Ansible playbook by ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunRequest'
+      x-stoplight:
+        id: 4zhv4ilj9altg
+    delete:
+      summary: Delete playbook
+      tags:
+        - playbook
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: delete-ansible-playbook
+      x-stoplight:
+        id: a4w5nzgjg5sdm
+      description: Delete Ansible playbook by ID
+  '/ansible/playbook/{id}/yaml':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: id
+        in: path
+        required: true
+        description: Playbook ID
+    get:
+      summary: Get playbook YAML
+      tags:
+        - playbook
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                properties: {}
+        '404':
+          description: Not Found
+      operationId: get-ansible-playbook-yaml
+      description: Get Ansible playbook YAML by ID
+      x-stoplight:
+        id: 37plbcp1w6oxe
+  /health/alive:
+    $ref: ./health.yaml#/paths/~1health~1alive
+  /health/status:
+    $ref: ./health.yaml#/paths/~1health~1status
+components:
+  schemas:
+    DeviceRole:
+      title: DeviceRole
+      x-stoplight:
+        id: cd0koez03tqpa
+      enum:
+        - cannon
+        - camera
+      default: cannon
+    DeviceStatus:
+      title: DeviceStatus
+      x-stoplight:
+        id: 8fuc5gmwbbsqv
+      enum:
+        - unknown
+        - online
+        - offline
+      default: unknown
+    Device:
+      title: Device
+      type: object
+      x-stoplight:
+        id: 13o9yv0te806w
+      required:
+        - id
+        - name
+        - description
+        - uri
+        - type
+        - role
+        - status
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          x-stoplight:
+            id: dgz6ujlfb3dlw
+        description:
+          type: string
+          x-stoplight:
+            id: gv4fv5b22hlc4
+        uri:
+          type: string
+          x-stoplight:
+            id: 7ojd61u5w0u8g
+          format: uri
+        type:
+          type: string
+          x-stoplight:
+            id: k73332rimtuyg
+        role:
+          $ref: '#/components/schemas/DeviceRole'
+          x-stoplight:
+            id: ha2tsh9serdh8
+        status:
+          $ref: '#/components/schemas/DeviceStatus'
+          x-stoplight:
+            id: 2d92forwvum1e
+    NewDevice:
+      title: NewDevice
+      x-stoplight:
+        id: af4rffinypchj
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - uri
+        - type
+        - role
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          x-stoplight:
+            id: fhewmlcpebsgp
+        description:
+          type: string
+          x-stoplight:
+            id: lyanl1dn8e4c5
+        uri:
+          type: string
+          x-stoplight:
+            id: bmec6pqoij9ui
+          format: uri
+        type:
+          type: string
+          x-stoplight:
+            id: g104uanwf6e9g
+        role:
+          $ref: '#/components/schemas/DeviceRole'
+          x-stoplight:
+            id: yv044mpykfy7g
+    UpdateDevice:
+      title: UpdateDevice
+      x-stoplight:
+        id: at80zgwsp54nn
+      type: object
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: h0huuhwicx4zn
+        description:
+          type: string
+          x-stoplight:
+            id: gxeg630ilwtmw
+        type:
+          type: string
+          x-stoplight:
+            id: n1hpwow5oq5oc
+        role:
+          $ref: '#/components/schemas/DeviceRole'
+          x-stoplight:
+            id: yv044mpykfy7g
+    DiagnosticType:
+      title: DiagnosticType
+      x-stoplight:
+        id: m0xkxr3tmb2sb
+      enum:
+        - server
+        - device
+    DiagnosticEntry:
+      title: DiagnosticEntry
+      x-stoplight:
+        id: a7avpdcv384nw
+      type: object
+      required:
+        - id
+        - type
+        - timestamp
+        - message
+        - server_id
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: d62a47qo0jkq7
+          format: uuid
+        type:
+          $ref: '#/components/schemas/DiagnosticType'
+          x-stoplight:
+            id: tbgr8ev42v08q
+        timestamp:
+          type: string
+          x-stoplight:
+            id: dnf77l3t876vk
+          format: date-time
+        message:
+          type: string
+          x-stoplight:
+            id: hf1atrd6cdgng
+        server_id:
+          type: string
+          x-stoplight:
+            id: vzfcbg2g5fgkq
+          format: uuid
+        device_id:
+          type: string
+          x-stoplight:
+            id: 5xxb3edvjusyv
+          format: uuid
+        session_id:
+          type: string
+          x-stoplight:
+            id: r5eh1a7i9b1i1
+          format: uuid
+        token_id:
+          type: string
+          x-stoplight:
+            id: wtb2083ohif2c
+          format: uuid
+        attributes:
+          type: object
+          x-stoplight:
+            id: lek3u5y0harwy
+          additionalProperties:
+            x-stoplight:
+              id: zcu4tcqxve8q1
+            type: string
+    StatisticType:
+      title: StatisticType
+      x-stoplight:
+        id: 3iukdk0rv2xyg
+      enum:
+        - latency
+    StatisticSource:
+      title: StatisticSource
+      x-stoplight:
+        id: shxl1975q2udt
+      enum:
+        - server
+        - device
+    StatisticEntry:
+      title: StatisticEntry
+      x-stoplight:
+        id: wlbr1kvkhol0e
+      type: object
+      required:
+        - id
+        - type
+        - source
+        - timestamp
+        - device_id
+        - session_id
+        - statistic
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 6zbyvxx9zu73x
+          format: uuid
+        type:
+          $ref: '#/components/schemas/StatisticType'
+          x-stoplight:
+            id: lnukyi4znl7if
+        source:
+          $ref: '#/components/schemas/StatisticSource'
+          x-stoplight:
+            id: sw8i1sue5xs6o
+        timestamp:
+          type: string
+          x-stoplight:
+            id: ir61ipgzten5t
+          format: date-time
+        device_id:
+          type: string
+          x-stoplight:
+            id: nulj5lyh6mcl2
+          format: uuid
+        session_id:
+          type: string
+          x-stoplight:
+            id: gh50k4pba4yhr
+          format: uuid
+        statistic:
+          x-stoplight:
+            id: 8tpomsy8bcrta
+          oneOf:
+            - $ref: '#/components/schemas/Latency'
+              x-stoplight:
+                id: ufeon0bu5o0qx
+          discriminator:
+            propertyName: type
+            mapping:
+              latency: '#/components/schemas/Latency'
+    Latency:
+      title: Latency
+      x-stoplight:
+        id: 3kxg5ezzgaozm
+      type: object
+      required:
+        - type
+        - peer_id
+        - token_id
+        - latency_us
+      properties:
+        type:
+          type: string
+          default: latency
+          x-stoplight:
+            id: f8nvjutyttu0u
+          readOnly: true
+        peer_id:
+          type: string
+          x-stoplight:
+            id: q9z0u816hh3tw
+          format: uuid
+        token_id:
+          type: string
+          x-stoplight:
+            id: 96jxd30q0tj8y
+          format: uuid
+        latency_us:
+          type: integer
+          x-stoplight:
+            id: 3zgb0zg6rdmot
+          format: int64
+    Playbook:
+      title: Playbook
+      x-stoplight:
+        id: eu0w2y9r1viv7
+      type: object
+      required:
+        - id
+        - name
+        - variables
+        - plays
+        - yaml
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 7owws98oovnbp
+          format: uuid
+        name:
+          type: string
+          x-stoplight:
+            id: b7pav35bbl0qg
+        variables:
+          type: object
+          x-stoplight:
+            id: gtv1hu759d5p5
+          additionalProperties:
+            x-stoplight:
+              id: y2j6vh24fp46l
+            type: string
+        plays:
+          type: array
+          x-stoplight:
+            id: hygs1sd5fpl8u
+          minItems: 1
+          items:
+            x-stoplight:
+              id: paekzeaz0w31k
+            type: object
+            additionalProperties:
+              x-stoplight:
+                id: 84i4tsuelcq10
+              type: object
+        yaml:
+          type: string
+          x-stoplight:
+            id: 2pikrthcfg3gi
+    RunRequest:
+      title: RunRequest
+      x-stoplight:
+        id: xnzjde45wz3wl
+      type: object
+      properties:
+        devices:
+          type: array
+          x-stoplight:
+            id: rnu3ulns1lp2i
+          items:
+            x-stoplight:
+              id: ffwws876vfmyo
+            type: string
+            format: uuid
+        options:
+          type: array
+          x-stoplight:
+            id: juc4iy9p4szqu
+          items:
+            x-stoplight:
+              id: 13iq1mwn7lwn9
+            type: string
+        variables:
+          type: object
+          x-stoplight:
+            id: j03xi3butl0jl
+          additionalProperties:
+            x-stoplight:
+              id: ssues0s8ef73h
+            type: string
+    RunResponse:
+      title: RunResponse
+      x-stoplight:
+        id: yzzzxklsi2uiw
+      type: object
+      required:
+        - hosts
+        - exit_code
+        - output_lines
+      properties:
+        hosts:
+          type: array
+          x-stoplight:
+            id: gn8jybm3ybccr
+          uniqueItems: true
+          items:
+            x-stoplight:
+              id: yqo77co3rv4ob
+            type: string
+        exit_code:
+          type: integer
+          x-stoplight:
+            id: qpqbytim9emp3
+        output_lines:
+          type: array
+          x-stoplight:
+            id: 8wj5um7rp49xj
+          items:
+            x-stoplight:
+              id: qwpkdmpz2gml8
+            type: string
