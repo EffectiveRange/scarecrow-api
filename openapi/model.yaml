@@ -68,4 +68,27 @@ components:
         - bang
       default: buzz
       type: string
-      
+    DeviceEventRequest:
+      title: EventRequest
+      x-stoplight:
+        id: 9qcvmnp4z3b75
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/DeviceEvent'
+          x-stoplight:
+            id: qbxkpr7ntnb7v
+      required:
+        - event
+    DeviceModeRequest:
+      title: DeviceModeRequest
+      x-stoplight:
+        id: ykhogb54qjwbi
+      type: object
+      properties:
+        mode:
+          $ref: '#/components/schemas/DeviceMode'
+          x-stoplight:
+            id: ux3swpn8jmr4p
+      required:
+        - mode

@@ -44,7 +44,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './model.yaml#/components/schemas/DeviceEvent'
+              type: object
+              $ref: './model.yaml#/components/schemas/DeviceEventRequest'
               x-stoplight:
                 id: oct37un9g8xnr
   /device/event:
@@ -72,7 +73,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./model.yaml#/components/schemas/DeviceMode
+              type: object
+              $ref: ./model.yaml#/components/schemas/DeviceModeRequest
               x-stoplight:
                 id: re1r4q54uei20
   /health/alive:
