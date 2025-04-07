@@ -260,6 +260,56 @@ paths:
       description: Delete a cell by ID
       x-stoplight:
         id: rbh5zchbikuhp
+  '/cell/{id}/mode':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: id
+        in: path
+        required: true
+        description: Cell ID
+    post:
+      summary: Set cell mode
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+      operationId: set-cell-mode
+      x-stoplight:
+        id: mnxeilg666kq1
+      description: Set cell operation mode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModeRequest'
+  '/cell/{id}/bang':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: id
+        in: path
+        required: true
+        description: Cell ID
+    post:
+      summary: Bang cell
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+      operationId: bang-on-cell
+      x-stoplight:
+        id: mov4tk3s7a0ty
+      description: Initiate bang on cell
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BangRequest'
   /diagnostics:
     get:
       summary: Get diagnostics
@@ -1018,3 +1068,37 @@ components:
             x-stoplight:
               id: qwpkdmpz2gml8
             type: string
+    BangRequest:
+      title: BangRequest
+      x-stoplight:
+        id: nli1013yovxem
+      type: object
+      properties:
+        cannon_ids:
+          type: array
+          x-stoplight:
+            id: 73lt6kr6s12gy
+          items:
+            x-stoplight:
+              id: fyb863n5ro6xo
+            type: string
+            format: uuid
+    ModeRequest:
+      title: ModeRequest
+      x-stoplight:
+        id: pxziwqiyofzsz
+      type: object
+      properties:
+        mode:
+          $ref: '#/components/schemas/DeviceMode'
+          x-stoplight:
+            id: czokv3rxthugw
+        device_ids:
+          type: array
+          x-stoplight:
+            id: cvs9x6ibsh4ih
+          items:
+            x-stoplight:
+              id: u7zyd1px5f9c1
+            type: string
+            format: uuid
