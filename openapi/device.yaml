@@ -1,6 +1,6 @@
 openapi: 3.1.0
 x-stoplight:
-  id: a6mgvrukveb07
+  id: nkfe0t78djhoi
 info:
   version: 0.1.0
   title: Device API
@@ -12,7 +12,8 @@ info:
     url: 'https://www.effective-range.com'
   license:
     name: MIT
-    url: 'https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE'
+    url: >-
+      https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE
 tags:
   - name: device
     description: Edge device
@@ -35,19 +36,19 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: lihkrq7ao5ac0
+                  id: xqa2vbg8oias2
       operationId: set-mode
       x-stoplight:
-        id: 39z5l15405kw6
+        id: umjcufk8uum7c
       description: Set operation mode
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              $ref: './model.yaml#/components/schemas/DeviceEventRequest'
+              $ref: ./model.yaml#/components/schemas/DeviceEventRequest
               x-stoplight:
-                id: oct37un9g8xnr
+                id: 31qsofw2vtt5b
   /device/event:
     post:
       summary: Trigger event
@@ -64,10 +65,10 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: kkea40tg1s50j
+                  id: h5pwdvc4bq8hm
       operationId: trigger-event
       x-stoplight:
-        id: gelbrph74d0q0
+        id: bctc6k9q8hjti
       description: Trigger event on device
       requestBody:
         content:
@@ -76,7 +77,7 @@ paths:
               type: object
               $ref: ./model.yaml#/components/schemas/DeviceModeRequest
               x-stoplight:
-                id: re1r4q54uei20
+                id: 5emiofk7xxoso
   /health/alive:
     $ref: ./health.yaml#/paths/~1health~1alive
   /health/status:

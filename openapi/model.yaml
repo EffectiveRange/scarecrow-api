@@ -1,6 +1,6 @@
 openapi: 3.1.0
 x-stoplight:
-  id: uwrhkes2u0iwi
+  id: h0cnxbwl3zz8x
 info:
   version: 0.1.0
   title: Common models
@@ -23,7 +23,7 @@ components:
     ErrorCode:
       title: ErrorCode
       x-stoplight:
-        id: ug1t94il3tjdw
+        id: 7yg0ltsrn3gj6
       enum:
         - unknown
         - unreachable
@@ -37,7 +37,7 @@ components:
     Error:
       title: Error
       x-stoplight:
-        id: 01dewxhc5cwwt
+        id: il1ogzb1xevrp
       type: object
       required:
         - code
@@ -45,15 +45,15 @@ components:
         code:
           $ref: '#/components/schemas/ErrorCode'
           x-stoplight:
-            id: lqu171esxd1as
+            id: 7idvowvglir9b
         reason:
           type: string
           x-stoplight:
-            id: n9czjx5984kqd
+            id: dan5s6ltwer6v
     DeviceMode:
       title: DeviceMode
       x-stoplight:
-        id: 5rwo2ag2d1vyv
+        id: ryya533rqjaqp
       enum:
         - manual
         - auto
@@ -62,7 +62,7 @@ components:
     DeviceEvent:
       title: DeviceEvent
       x-stoplight:
-        id: cpc7k6c5k9vno
+        id: immde7wz73eqj
       enum:
         - buzz
         - bang
@@ -71,24 +71,24 @@ components:
     DeviceEventRequest:
       title: EventRequest
       x-stoplight:
-        id: 9qcvmnp4z3b75
+        id: csbgt4ne5mxxs
       type: object
       properties:
         event:
           $ref: '#/components/schemas/DeviceEvent'
           x-stoplight:
-            id: qbxkpr7ntnb7v
+            id: eqk1r4752syzp
       required:
         - event
     DeviceModeRequest:
       title: DeviceModeRequest
       x-stoplight:
-        id: ykhogb54qjwbi
+        id: urb7rfycr2nwm
       type: object
       properties:
         mode:
           $ref: '#/components/schemas/DeviceMode'
           x-stoplight:
-            id: ux3swpn8jmr4p
+            id: 0b5wwe54lsdsh
       required:
         - mode

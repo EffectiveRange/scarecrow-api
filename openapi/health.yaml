@@ -1,6 +1,6 @@
 openapi: 3.1.0
 x-stoplight:
-  id: 1ef5liq8sojfl
+  id: eah9hvky64i0x
 info:
   version: 0.1.0
   title: Health API
@@ -36,10 +36,10 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: lmdkby3eqlb0u
+                  id: 0hnqhhviysnx5
       operationId: health-alive
       x-stoplight:
-        id: r03pcuc9160kg
+        id: ut7s2t1utlzxy
       description: Component signals it is alive on the network
       requestBody:
         content:
@@ -65,10 +65,10 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: 9781jr1fdk6ii
+                  id: kbfu6stjn4fpe
       operationId: health-status
       x-stoplight:
-        id: dbcce2e7sohgc
+        id: c6t7fqyh58k2o
       description: Component signals its health status
       requestBody:
         content:
@@ -81,7 +81,7 @@ components:
     Component:
       title: Component
       x-stoplight:
-        id: 1zhfrduvc0uq9
+        id: 25pz5k69n0j06
       type: object
       required:
         - id
@@ -91,24 +91,24 @@ components:
         id:
           type: string
           x-stoplight:
-            id: 562bzdp0q4ewz
+            id: 5v1abc4gpfj8t
           format: uuid
         uri:
           type: string
           x-stoplight:
-            id: kxecarekry8sx
+            id: b9zjtw0p3orv1
           format: uri
         status_period:
           type: integer
           x-stoplight:
-            id: 4f5i0f5zrpel8
+            id: 1l5l2x56fkfin
         session_id:
           type: string
           x-stoplight:
-            id: opbm24yzurz8m
+            id: jfbbd24yqwwtq
           format: uuid
         error:
           type: object
           $ref: ./model.yaml#/components/schemas/Error
           x-stoplight:
-            id: pmb5jshe2p431
+            id: fzbdyrsbx1rq3

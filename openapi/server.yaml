@@ -1,6 +1,6 @@
 openapi: 3.1.0
 x-stoplight:
-  id: 5ovzb2epbdb9w
+  id: q0mynj4z14gu6
 info:
   version: 0.1.0
   title: Server API
@@ -12,7 +12,8 @@ info:
     url: 'https://www.effective-range.com'
   license:
     name: MIT
-    url: 'https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE'
+    url: >-
+      https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE
 tags:
   - name: cell
     description: Cell
@@ -49,10 +50,10 @@ paths:
               type: object
               $ref: '#/components/schemas/NewDevice'
               x-stoplight:
-                id: vvcvs8w2w7o7a
+                id: 5902qrt88ovkj
       description: Add a new device
       x-stoplight:
-        id: 7bfsn9afk15wv
+        id: 8ks7r2yz8mao2
     get:
       responses:
         '200':
@@ -65,14 +66,14 @@ paths:
                   type: object
                   $ref: '#/components/schemas/Device'
                   x-stoplight:
-                    id: abcmmiprxys8j
+                    id: u8d5a0s16u8ye
       operationId: get-devices
       summary: Get devices
       description: Get a list of all devices
       tags:
         - device
       x-stoplight:
-        id: ckiqjcapw19uw
+        id: 690ub9eet2el9
     parameters: []
   '/device/{id}':
     get:
@@ -85,7 +86,7 @@ paths:
                 type: object
                 $ref: '#/components/schemas/Device'
                 x-stoplight:
-                  id: t7utcz7ig651g
+                  id: zfdrkom4p7lpy
         '404':
           description: Not Found
       operationId: get-device
@@ -94,7 +95,7 @@ paths:
       tags:
         - device
       x-stoplight:
-        id: fe8lz1tdfr7z6
+        id: w778unkw84k99
     put:
       responses:
         '202':
@@ -111,7 +112,7 @@ paths:
       tags:
         - device
       x-stoplight:
-        id: moaj4rwgg18u1
+        id: kotyi42f02n2u
       requestBody:
         content:
           application/json:
@@ -129,7 +130,7 @@ paths:
       tags:
         - device
       x-stoplight:
-        id: db7f2eimx75te
+        id: h0bkwq8pbj70j
     parameters:
       - schema:
           type: string
@@ -151,12 +152,12 @@ paths:
       tags:
         - device
       x-stoplight:
-        id: 3hs01cuyvwi6v
+        id: qfsuero6qbo24
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './model.yaml#/components/schemas/DeviceModeRequest'
+              $ref: ./model.yaml#/components/schemas/DeviceModeRequest
     parameters:
       - schema:
           type: string
@@ -178,12 +179,12 @@ paths:
       tags:
         - device
       x-stoplight:
-        id: moaj4rwgg18u1
+        id: j7rs0abp8yds9
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './model.yaml#/components/schemas/DeviceEventRequest'
+              $ref: ./model.yaml#/components/schemas/DeviceEventRequest
     parameters:
       - schema:
           type: string
@@ -202,7 +203,7 @@ paths:
           description: OK
       operationId: discover-devices
       x-stoplight:
-        id: cttycfhcua44e
+        id: rxfgriehz4fvu
       description: Initiate device discovery
   /cell:
     post:
@@ -227,9 +228,9 @@ paths:
               type: object
               $ref: '#/components/schemas/NewCell'
               x-stoplight:
-                id: 02eybj6tzth5b
+                id: 9p3311r56bony
       x-stoplight:
-        id: buektbsib84e7
+        id: smwd19e2d3f1h
     get:
       summary: Get cells
       tags:
@@ -245,11 +246,11 @@ paths:
                   type: object
                   $ref: '#/components/schemas/Cell'
                   x-stoplight:
-                    id: erozd2cuyz9xa
+                    id: 5wj4bd3j3uzc4
       operationId: get-cells
       description: Get all cells
       x-stoplight:
-        id: iz17j1i00lf38
+        id: x6sky9tqf2fax
   '/cell/{id}':
     parameters:
       - schema:
@@ -272,13 +273,13 @@ paths:
                 type: object
                 $ref: '#/components/schemas/Cell'
                 x-stoplight:
-                  id: i78t3m4y5oce5
+                  id: njub0cr1cdkbp
         '404':
           description: Not Found
       operationId: get-cell
       description: Get a cell by ID
       x-stoplight:
-        id: g7oyzelo3jbcm
+        id: 95i99czjlwiwm
     delete:
       summary: Delete cell
       tags:
@@ -291,7 +292,7 @@ paths:
       operationId: delete-cell
       description: Delete a cell by ID
       x-stoplight:
-        id: rbh5zchbikuhp
+        id: mipkdtsr6k6l8
   '/cell/{id}/mode':
     parameters:
       - schema:
@@ -310,7 +311,7 @@ paths:
           description: OK
       operationId: set-cell-mode
       x-stoplight:
-        id: mnxeilg666kq1
+        id: 72ps4ov1klr1k
       description: Set cell operation mode
       requestBody:
         content:
@@ -335,7 +336,7 @@ paths:
           description: OK
       operationId: bang-on-cell
       x-stoplight:
-        id: mov4tk3s7a0ty
+        id: sw1qikls79ath
       description: Initiate bang on cell
       requestBody:
         content:
@@ -357,10 +358,10 @@ paths:
                 items:
                   $ref: '#/components/schemas/DiagnosticEntry'
                   x-stoplight:
-                    id: hwnr0sapbvwyo
+                    id: y4a4y0vvv72xt
       operationId: get-diagnostics
       x-stoplight:
-        id: kgz3oj3qw0hqn
+        id: kmer8az9s7nt6
       description: Get all diagnostic entries
     delete:
       summary: Clear diagnostics
@@ -371,7 +372,7 @@ paths:
           description: OK
       operationId: clear-diagnostics
       x-stoplight:
-        id: bfpeydokyszgk
+        id: 0641z6qzvsan9
       description: Delete all diagnostic entries
     parameters:
       - schema:
@@ -419,10 +420,10 @@ paths:
                 items:
                   $ref: '#/components/schemas/StatisticEntry'
                   x-stoplight:
-                    id: zgcgw5cwzkr86
+                    id: kap7mhl5c8awt
       operationId: get-statistics
       x-stoplight:
-        id: w90e9xve8yf8k
+        id: p65m1bygukitg
       description: Get all statistic entries
     delete:
       summary: Clear statistics
@@ -433,7 +434,7 @@ paths:
           description: OK
       operationId: delete-statistics
       x-stoplight:
-        id: ueezp4gkpmdlf
+        id: iixz5llbh7f3c
       description: Delete all statistic entries
     parameters:
       - schema:
@@ -487,10 +488,10 @@ paths:
                 items:
                   $ref: '#/components/schemas/Playbook'
                   x-stoplight:
-                    id: ubel6kxsx0hgf
+                    id: sgth70jnwb8c6
       operationId: get-ansible-playbooks
       x-stoplight:
-        id: atsvwbizwbz47
+        id: csluf2utq4h0m
       description: Get all Ansible playbooks
     post:
       summary: Add playbook
@@ -507,7 +508,7 @@ paths:
           description: Bad Request
       operationId: add-ansible-playbook
       x-stoplight:
-        id: rh6lni10dle4s
+        id: 9durikg0406ny
       description: Add new Ansible playbook
       requestBody:
         content:
@@ -531,7 +532,7 @@ paths:
       operationId: get-ansible-playbook-yamls
       description: Get all Ansible playbooks as YAML
       x-stoplight:
-        id: uksu6j8h7b1rn
+        id: uf4y3cnchllt8
   '/ansible/playbook/{id}':
     parameters:
       - schema:
@@ -556,7 +557,7 @@ paths:
           description: Not Found
       operationId: get-ansible-playbook
       x-stoplight:
-        id: 6acjdisjszx7h
+        id: 6zre904pkcw1n
       description: Get Ansible playbook by ID
     post:
       summary: Run playbook
@@ -581,7 +582,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RunRequest'
       x-stoplight:
-        id: 4zhv4ilj9altg
+        id: ua4jbjjj14n5d
     delete:
       summary: Delete playbook
       tags:
@@ -593,7 +594,7 @@ paths:
           description: Not Found
       operationId: delete-ansible-playbook
       x-stoplight:
-        id: a4w5nzgjg5sdm
+        id: 7n1payltp7aux
       description: Delete Ansible playbook by ID
   '/ansible/playbook/{id}/yaml':
     parameters:
@@ -621,7 +622,7 @@ paths:
       operationId: get-ansible-playbook-yaml
       description: Get Ansible playbook YAML by ID
       x-stoplight:
-        id: 37plbcp1w6oxe
+        id: y8t8wx59h9mj3
   /health/alive:
     $ref: ./health.yaml#/paths/~1health~1alive
   /health/status:
@@ -631,7 +632,7 @@ components:
     DeviceRole:
       title: DeviceRole
       x-stoplight:
-        id: cd0koez03tqpa
+        id: 60r53msn3esv4
       enum:
         - cannon
         - camera
@@ -640,7 +641,7 @@ components:
     DeviceStatus:
       title: DeviceStatus
       x-stoplight:
-        id: 8fuc5gmwbbsqv
+        id: bgrf638x364hz
       enum:
         - unknown
         - online
@@ -651,7 +652,7 @@ components:
       title: Device
       type: object
       x-stoplight:
-        id: 13o9yv0te806w
+        id: fom9rie1ah3ir
       properties:
         id:
           type: string
@@ -659,28 +660,28 @@ components:
         name:
           type: string
           x-stoplight:
-            id: dgz6ujlfb3dlw
+            id: m3wkhl3ft1b2p
         description:
           type: string
           x-stoplight:
-            id: gv4fv5b22hlc4
+            id: y6vrjxhp9zws3
         uri:
           type: string
           x-stoplight:
-            id: 7ojd61u5w0u8g
+            id: kovtg7tw6pjmx
           format: uri
         role:
           $ref: '#/components/schemas/DeviceRole'
           x-stoplight:
-            id: ha2tsh9serdh8
+            id: 9wwrhkwkj8b1a
         status:
           $ref: '#/components/schemas/DeviceStatus'
           x-stoplight:
-            id: 2d92forwvum1e
+            id: gehfj1nzyistb
         mode:
           $ref: ./model.yaml#/components/schemas/DeviceMode
           x-stoplight:
-            id: f4otnests6fs1
+            id: cogmg5f0z9byx
       required:
         - id
         - name
@@ -693,37 +694,37 @@ components:
       title: Cell
       type: object
       x-stoplight:
-        id: ig29d6ko7lff6
+        id: r5cac44rnkx8g
       properties:
         id:
           type: string
           x-stoplight:
-            id: o6j8o8wb37y8d
+            id: ypogii6rvz4sr
           format: uuid
         name:
           type: string
           x-stoplight:
-            id: o5ikh4ton9h9b
+            id: cmxt8fg573jvq
         description:
           type: string
           x-stoplight:
-            id: h5qwn5vts974u
+            id: viihfcf1uoh7a
         cannon_ids:
           type: array
           x-stoplight:
-            id: s2ohwahg1qezf
+            id: 05u8e758gg4jf
           items:
             x-stoplight:
-              id: uo4fbeibl26v8
+              id: a3h5w45gre6q4
             type: string
             format: uuid
         camera_ids:
           type: array
           x-stoplight:
-            id: dntm94yvxn5ar
+            id: k9pyo3tjeqcgd
           items:
             x-stoplight:
-              id: 4hckrpjdt07fm
+              id: g1aneblvj7zth
             type: string
             format: uuid
       required:
@@ -735,7 +736,7 @@ components:
     NewDevice:
       title: NewDevice
       x-stoplight:
-        id: af4rffinypchj
+        id: 24sxkvncccgrk
       type: object
       properties:
         id:
@@ -744,20 +745,20 @@ components:
         name:
           type: string
           x-stoplight:
-            id: fhewmlcpebsgp
+            id: jjsbb0xoyextq
         description:
           type: string
           x-stoplight:
-            id: lyanl1dn8e4c5
+            id: jk4fn3wzwopvb
         uri:
           type: string
           x-stoplight:
-            id: bmec6pqoij9ui
+            id: 4l4cqne3pg20w
           format: uri
         role:
           $ref: '#/components/schemas/DeviceRole'
           x-stoplight:
-            id: yv044mpykfy7g
+            id: g5ey2t23n0naj
       required:
         - id
         - name
@@ -767,55 +768,55 @@ components:
     UpdateDevice:
       title: UpdateDevice
       x-stoplight:
-        id: at80zgwsp54nn
+        id: yb70qua8lr844
       type: object
       properties:
         name:
           type: string
           x-stoplight:
-            id: h0huuhwicx4zn
+            id: k79net3l7ey4q
         description:
           type: string
           x-stoplight:
-            id: gxeg630ilwtmw
+            id: ixdpsz2mykeds
         type:
           type: string
           x-stoplight:
-            id: n1hpwow5oq5oc
+            id: bknuifvu4qyj0
         role:
           $ref: '#/components/schemas/DeviceRole'
           x-stoplight:
-            id: yv044mpykfy7g
+            id: oo50iss0jkl2j
     NewCell:
       title: NewCell
       x-stoplight:
-        id: wucmo97w4s7tg
+        id: 2zqwbr862586t
       type: object
       properties:
         name:
           type: string
           x-stoplight:
-            id: dmayhtzkgw51z
+            id: ltu4vwh3ar9uh
         description:
           type: string
           x-stoplight:
-            id: u71q73xtiskzj
+            id: j76ozutxmi0f8
         cannon_ids:
           type: array
           x-stoplight:
-            id: 0eb9rtxaex3l1
+            id: vlo3fqlsqi801
           items:
             x-stoplight:
-              id: 2479bd38l1y9g
+              id: odace9utcs8rl
             type: string
             format: uuid
         camera_ids:
           type: array
           x-stoplight:
-            id: wosg75s0rjvg8
+            id: yopqvq0thps4f
           items:
             x-stoplight:
-              id: ywqx4nesyy6ij
+              id: e7ctjge8xrpyn
             type: string
             format: uuid
       required:
@@ -826,7 +827,7 @@ components:
     DiagnosticType:
       title: DiagnosticType
       x-stoplight:
-        id: m0xkxr3tmb2sb
+        id: anb6nwjhrn1li
       enum:
         - server
         - device
@@ -834,7 +835,7 @@ components:
     DiagnosticEntry:
       title: DiagnosticEntry
       x-stoplight:
-        id: a7avpdcv384nw
+        id: xeu39b07nmf2a
       type: object
       required:
         - id
@@ -846,60 +847,60 @@ components:
         id:
           type: string
           x-stoplight:
-            id: d62a47qo0jkq7
+            id: 3mjy1j41bm5w5
           format: uuid
         type:
           $ref: '#/components/schemas/DiagnosticType'
           x-stoplight:
-            id: tbgr8ev42v08q
+            id: vpf6tsr5r2oi1
         timestamp:
           type: string
           x-stoplight:
-            id: dnf77l3t876vk
+            id: oqvvchqu36a5t
           format: date-time
         message:
           type: string
           x-stoplight:
-            id: hf1atrd6cdgng
+            id: ypc66e6nvqkuk
         server_id:
           type: string
           x-stoplight:
-            id: vzfcbg2g5fgkq
+            id: nysk7aq1s2isi
           format: uuid
         device_id:
           type: string
           x-stoplight:
-            id: 5xxb3edvjusyv
+            id: qrt815nmp4huk
           format: uuid
         session_id:
           type: string
           x-stoplight:
-            id: r5eh1a7i9b1i1
+            id: 4mtnvayzdyad7
           format: uuid
         token_id:
           type: string
           x-stoplight:
-            id: wtb2083ohif2c
+            id: esnkx771aqggw
           format: uuid
         attributes:
           type: object
           x-stoplight:
-            id: lek3u5y0harwy
+            id: yhsxes6wi8pjm
           additionalProperties:
             x-stoplight:
-              id: zcu4tcqxve8q1
+              id: pom5xlzik3pm2
             type: string
     StatisticType:
       title: StatisticType
       x-stoplight:
-        id: 3iukdk0rv2xyg
+        id: v0yii3b8jofow
       enum:
         - latency
       type: string
     StatisticSource:
       title: StatisticSource
       x-stoplight:
-        id: shxl1975q2udt
+        id: zuk4tjaropj1q
       enum:
         - server
         - device
@@ -907,7 +908,7 @@ components:
     StatisticEntry:
       title: StatisticEntry
       x-stoplight:
-        id: wlbr1kvkhol0e
+        id: vfvkxvhjkljsi
       type: object
       required:
         - id
@@ -921,38 +922,38 @@ components:
         id:
           type: string
           x-stoplight:
-            id: 6zbyvxx9zu73x
+            id: bx9a3h4sn1wcq
           format: uuid
         type:
           $ref: '#/components/schemas/StatisticType'
           x-stoplight:
-            id: lnukyi4znl7if
+            id: 00x7pwslf9eqr
         source:
           $ref: '#/components/schemas/StatisticSource'
           x-stoplight:
-            id: sw8i1sue5xs6o
+            id: qej20l0zl82bt
         timestamp:
           type: string
           x-stoplight:
-            id: ir61ipgzten5t
+            id: tt80z9w49vjik
           format: date-time
         device_id:
           type: string
           x-stoplight:
-            id: nulj5lyh6mcl2
+            id: wj6ctsrmfbuu8
           format: uuid
         session_id:
           type: string
           x-stoplight:
-            id: gh50k4pba4yhr
+            id: 5gmif6kvsghex
           format: uuid
         statistic:
           x-stoplight:
-            id: 8tpomsy8bcrta
+            id: 3izyuf35a9rx9
           oneOf:
             - $ref: '#/components/schemas/Latency'
               x-stoplight:
-                id: ufeon0bu5o0qx
+                id: 55r1ysjyjfx5t
           discriminator:
             propertyName: type
             mapping:
@@ -960,7 +961,7 @@ components:
     Latency:
       title: Latency
       x-stoplight:
-        id: 3kxg5ezzgaozm
+        id: q1473mjvyoncf
       type: object
       required:
         - type
@@ -972,27 +973,27 @@ components:
           type: string
           default: latency
           x-stoplight:
-            id: f8nvjutyttu0u
+            id: xobamqeptshtq
           readOnly: true
         peer_id:
           type: string
           x-stoplight:
-            id: q9z0u816hh3tw
+            id: qegp8kt39u48v
           format: uuid
         token_id:
           type: string
           x-stoplight:
-            id: 96jxd30q0tj8y
+            id: 74eezyhvwz8kk
           format: uuid
         latency_us:
           type: integer
           x-stoplight:
-            id: 3zgb0zg6rdmot
+            id: cfpe25mpcroqc
           format: int64
     Playbook:
       title: Playbook
       x-stoplight:
-        id: eu0w2y9r1viv7
+        id: bpd36attpklt6
       type: object
       required:
         - id
@@ -1004,72 +1005,72 @@ components:
         id:
           type: string
           x-stoplight:
-            id: 7owws98oovnbp
+            id: ivaqgb5ekyj1o
           format: uuid
         name:
           type: string
           x-stoplight:
-            id: b7pav35bbl0qg
+            id: g7242gryle3v6
         variables:
           type: object
           x-stoplight:
-            id: gtv1hu759d5p5
+            id: 5pa4x96mkmpig
           additionalProperties:
             x-stoplight:
-              id: y2j6vh24fp46l
+              id: wi9rcp9bbmtrw
             type: string
         plays:
           type: array
           x-stoplight:
-            id: hygs1sd5fpl8u
+            id: 22kq0szw5ut0o
           minItems: 1
           items:
             x-stoplight:
-              id: paekzeaz0w31k
+              id: 8owdo41pcgjn0
             type: object
             additionalProperties:
               x-stoplight:
-                id: 84i4tsuelcq10
+                id: 8qkfl4y2jk8cw
               type: object
         yaml:
           type: string
           x-stoplight:
-            id: 2pikrthcfg3gi
+            id: jupsj9t5tu02g
     RunRequest:
       title: RunRequest
       x-stoplight:
-        id: xnzjde45wz3wl
+        id: ztwolobuck6ch
       type: object
       properties:
         devices:
           type: array
           x-stoplight:
-            id: rnu3ulns1lp2i
+            id: j12jla4c5jl0c
           items:
             x-stoplight:
-              id: ffwws876vfmyo
+              id: 7q6nqnmq5kab5
             type: string
             format: uuid
         options:
           type: array
           x-stoplight:
-            id: juc4iy9p4szqu
+            id: 06q3zkc67pes9
           items:
             x-stoplight:
-              id: 13iq1mwn7lwn9
+              id: 8a92vxuefsocq
             type: string
         variables:
           type: object
           x-stoplight:
-            id: j03xi3butl0jl
+            id: 0ppvi3bxfgcvv
           additionalProperties:
             x-stoplight:
-              id: ssues0s8ef73h
+              id: ej1lt5iiem9np
             type: string
     RunResponse:
       title: RunResponse
       x-stoplight:
-        id: yzzzxklsi2uiw
+        id: 3zntb3cfe8onf
       type: object
       required:
         - hosts
@@ -1079,41 +1080,41 @@ components:
         hosts:
           type: array
           x-stoplight:
-            id: gn8jybm3ybccr
+            id: 1ozkabptbvyus
           uniqueItems: true
           items:
             x-stoplight:
-              id: yqo77co3rv4ob
+              id: 78dj07yoo7xli
             type: string
         exit_code:
           type: integer
           x-stoplight:
-            id: qpqbytim9emp3
+            id: aw8isjj5ldki1
         output_lines:
           type: array
           x-stoplight:
-            id: 8wj5um7rp49xj
+            id: bzkmg7aksw9e8
           items:
             x-stoplight:
-              id: qwpkdmpz2gml8
+              id: ylhz5k3kv9b8p
             type: string
     CellEventRequest:
       title: CellEventRequest
       x-stoplight:
-        id: nli1013yovxem
+        id: hzv3wtk5t1nv9
       type: object
       properties:
         event:
-          $ref: './model.yaml#/components/schemas/DeviceEvent'
+          $ref: ./model.yaml#/components/schemas/DeviceEvent
           x-stoplight:
-            id: xemolcbjb45vd
+            id: a439wcbej4o64
         device_ids:
           type: array
           x-stoplight:
-            id: 73lt6kr6s12gy
+            id: r391a7ri9hd3i
           items:
             x-stoplight:
-              id: fyb863n5ro6xo
+              id: kwx2ddj7l3ahc
             type: string
             format: uuid
       required:
@@ -1121,20 +1122,20 @@ components:
     CellModeRequest:
       title: CellModeRequest
       x-stoplight:
-        id: pxziwqiyofzsz
+        id: 7m69xwofnr9mz
       type: object
       properties:
         mode:
-          $ref: './model.yaml#/components/schemas/DeviceMode'
+          $ref: ./model.yaml#/components/schemas/DeviceMode
           x-stoplight:
-            id: czokv3rxthugw
+            id: 6fdgaueotvpo0
         device_ids:
           type: array
           x-stoplight:
-            id: cvs9x6ibsh4ih
+            id: pa1rigjn0hij0
           items:
             x-stoplight:
-              id: u7zyd1px5f9c1
+              id: a7tio12wrso9h
             type: string
             format: uuid
       required:
