@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.effectiverange.scarecrow.proto.serverdevice";
+
+package serverdevice;
+
+message UUID {
+  // String instead of bytes to avoid endianness issues
+  string value = 1;
+}
+
+enum ErrorCode {
+  UNKNOWN = 0;
+  UNREACHABLE = 1;
+  STATUS_EXPIRED = 2;
+  INVALID_ARGUMENT = 3;
+  INTERNAL_ERROR = 4;
+  LOCAL_ERROR = 5;
+  INVALID_STATE = 6;
+}
+
+message Error {
+  ErrorCode code = 1;
+  optional string reason = 2;
+}
+
+message Component {
+  UUID id = 1;
+  string uri = 2;
+  // Status period in seconds
+  uint64 status_period = 3;
+  optional Error error = 4;
+}
+
+message HealthRequest {Component component = 1;}
+
+enum DeviceMode {
+  MANUAL = 0;
+  AUTO = 1;
+}
+
+message ModeRequest {DeviceMode mode = 1;}
+
+enum DeviceEvent {
+  BUZZ = 0;
+  BANG = 1;
+}
+
+message EventRequest {DeviceEvent event = 1;}
+
+message Response {optional Error error = 1;}
+
+
+
+///////////////////////////
+
+service Health {
+  // used for signalling when a component starts
+  // communicates peer info and status message
+  // time. Once per component startup,
+  // if an endpoint receives a subsequent alive
+  // request then it treats the peer as if was
+  // restarted, and all existing tokens invalidate locally
+  rpc Alive(HealthRequest) returns (Response) {}
+  // periodic status message called in intervals
+  // specified in the initial alive request
+  rpc Status(HealthRequest) returns (Response) {}
+}
+
+service Device {
+  rpc SetMode(ModeRequest) returns (Response) {}
+  rpc TriggerEvent(EventRequest) returns (Response) {}
+}

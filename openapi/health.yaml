@@ -36,7 +36,7 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: 0hnqhhviysnx5
+                  id: 01dewxhc5cwwt
       operationId: health-alive
       x-stoplight:
         id: ut7s2t1utlzxy
@@ -65,7 +65,7 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: kbfu6stjn4fpe
+                  id: 01dewxhc5cwwt
       operationId: health-status
       x-stoplight:
         id: c6t7fqyh58k2o
@@ -111,4 +111,4 @@ components:
           type: object
           $ref: ./model.yaml#/components/schemas/Error
           x-stoplight:
-            id: fzbdyrsbx1rq3
+            id: 01dewxhc5cwwt

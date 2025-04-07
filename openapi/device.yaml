@@ -36,7 +36,7 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: xqa2vbg8oias2
+                  id: 01dewxhc5cwwt
       operationId: set-mode
       x-stoplight:
         id: umjcufk8uum7c
@@ -48,7 +48,7 @@ paths:
               type: object
               $ref: ./model.yaml#/components/schemas/DeviceEventRequest
               x-stoplight:
-                id: 31qsofw2vtt5b
+                id: oct37un9g8xnr
   /device/event:
     post:
       summary: Trigger event
@@ -65,7 +65,7 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: h5pwdvc4bq8hm
+                  id: 01dewxhc5cwwt
       operationId: trigger-event
       x-stoplight:
         id: bctc6k9q8hjti
@@ -77,7 +77,7 @@ paths:
               type: object
               $ref: ./model.yaml#/components/schemas/DeviceModeRequest
               x-stoplight:
-                id: 5emiofk7xxoso
+                id: re1r4q54uei20
   /health/alive:
     $ref: ./health.yaml#/paths/~1health~1alive
   /health/status:
