@@ -1,0 +1,81 @@
+openapi: 3.1.0
+x-stoplight:
+  id: a6mgvrukveb07
+info:
+  version: 0.1.0
+  title: Device API
+  summary: Scarecrow device API
+  description: Edge device API for the Scarecrow system
+  contact:
+    name: Effective Range
+    email: info@effective-range.com
+    url: 'https://www.effective-range.com'
+  license:
+    name: MIT
+    url: 'https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE'
+tags:
+  - name: device
+    description: Edge device
+  - name: health
+    description: Component health
+paths:
+  /device/mode:
+    post:
+      summary: Set mode
+      tags:
+        - device
+      responses:
+        '202':
+          description: Accepted
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: ./model.yaml#/components/schemas/Error
+                x-stoplight:
+                  id: lihkrq7ao5ac0
+      operationId: set-mode
+      x-stoplight:
+        id: 39z5l15405kw6
+      description: Set operation mode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './model.yaml#/components/schemas/DeviceEvent'
+              x-stoplight:
+                id: oct37un9g8xnr
+  /device/event:
+    post:
+      summary: Trigger event
+      tags:
+        - device
+      responses:
+        '202':
+          description: Accepted
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: ./model.yaml#/components/schemas/Error
+                x-stoplight:
+                  id: kkea40tg1s50j
+      operationId: trigger-event
+      x-stoplight:
+        id: gelbrph74d0q0
+      description: Trigger event on device
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./model.yaml#/components/schemas/DeviceMode
+              x-stoplight:
+                id: re1r4q54uei20
+  /health/alive:
+    $ref: ./health.yaml#/paths/~1health~1alive
+  /health/status:
+    $ref: ./health.yaml#/paths/~1health~1status

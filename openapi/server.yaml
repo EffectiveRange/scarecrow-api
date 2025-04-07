@@ -620,15 +620,6 @@ components:
         - offline
       default: unknown
       type: string
-    DeviceMode:
-      title: DeviceMode
-      x-stoplight:
-        id: 1d61hvywf11ct
-      enum:
-        - manual
-        - auto
-      default: manual
-      type: string
     Device:
       title: Device
       type: object
@@ -660,7 +651,7 @@ components:
           x-stoplight:
             id: 2d92forwvum1e
         mode:
-          $ref: '#/components/schemas/DeviceMode'
+          $ref: './model.yaml#/components/schemas/DeviceMode'
           x-stoplight:
             id: f4otnests6fs1
       required:
@@ -1101,7 +1092,7 @@ components:
       type: object
       properties:
         mode:
-          $ref: '#/components/schemas/DeviceMode'
+          $ref: './model.yaml#/components/schemas/DeviceMode'
           x-stoplight:
             id: czokv3rxthugw
         device_ids:
@@ -1113,15 +1104,6 @@ components:
               id: u7zyd1px5f9c1
             type: string
             format: uuid
-    DeviceEvent:
-      title: DeviceEvent
-      x-stoplight:
-        id: 6fbkqy864tuc0
-      enum:
-        - buzz
-        - bang
-      default: buzz
-      type: string
     EventRequest:
       title: EventRequest
       x-stoplight:
@@ -1129,6 +1111,6 @@ components:
       type: object
       properties:
         event:
-          $ref: '#/components/schemas/DeviceEvent'
+          $ref: './model.yaml#/components/schemas/DeviceEvent'
           x-stoplight:
             id: oct37un9g8xnr

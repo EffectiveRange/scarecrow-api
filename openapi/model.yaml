@@ -50,3 +50,22 @@ components:
           type: string
           x-stoplight:
             id: n9czjx5984kqd
+    DeviceMode:
+      title: DeviceMode
+      x-stoplight:
+        id: 5rwo2ag2d1vyv
+      enum:
+        - manual
+        - auto
+      default: manual
+      type: string
+    DeviceEvent:
+      title: DeviceEvent
+      x-stoplight:
+        id: cpc7k6c5k9vno
+      enum:
+        - buzz
+        - bang
+      default: buzz
+      type: string
+      
