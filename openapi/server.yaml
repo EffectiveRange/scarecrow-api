@@ -74,28 +74,6 @@ paths:
       x-stoplight:
         id: ckiqjcapw19uw
     parameters: []
-  /device/active:
-    get:
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  $ref: '#/components/schemas/Device'
-                  x-stoplight:
-                    id: t5n14euu6qbhq
-      operationId: get-active-devices
-      summary: Get active devices
-      description: Get a list of currently active devices
-      tags:
-        - device
-      x-stoplight:
-        id: pwaj3yagrc469
-    parameters: []
   '/device/{id}':
     get:
       responses:
@@ -152,6 +130,33 @@ paths:
         - device
       x-stoplight:
         id: db7f2eimx75te
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: id
+        in: path
+        required: true
+        description: Device ID
+  '/device/{id}/event':
+    post:
+      responses:
+        '202':
+          description: Accepted
+        '404':
+          description: Not Found
+      operationId: trigger-event
+      summary: Trigger event
+      description: Trigger event on device
+      tags:
+        - device
+      x-stoplight:
+        id: moaj4rwgg18u1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventRequest'
     parameters:
       - schema:
           type: string
@@ -604,6 +609,7 @@ components:
         - cannon
         - camera
       default: cannon
+      type: string
     DeviceStatus:
       title: DeviceStatus
       x-stoplight:
@@ -613,6 +619,7 @@ components:
         - online
         - offline
       default: unknown
+      type: string
     DeviceMode:
       title: DeviceMode
       x-stoplight:
@@ -621,6 +628,7 @@ components:
         - manual
         - auto
       default: manual
+      type: string
     Device:
       title: Device
       type: object
@@ -804,6 +812,7 @@ components:
       enum:
         - server
         - device
+      type: string
     DiagnosticEntry:
       title: DiagnosticEntry
       x-stoplight:
@@ -868,6 +877,7 @@ components:
         id: 3iukdk0rv2xyg
       enum:
         - latency
+      type: string
     StatisticSource:
       title: StatisticSource
       x-stoplight:
@@ -875,6 +885,7 @@ components:
       enum:
         - server
         - device
+      type: string
     StatisticEntry:
       title: StatisticEntry
       x-stoplight:
@@ -1102,3 +1113,22 @@ components:
               id: u7zyd1px5f9c1
             type: string
             format: uuid
+    DeviceEvent:
+      title: DeviceEvent
+      x-stoplight:
+        id: 6fbkqy864tuc0
+      enum:
+        - buzz
+        - bang
+      default: buzz
+      type: string
+    EventRequest:
+      title: EventRequest
+      x-stoplight:
+        id: no0gexdyraikj
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/DeviceEvent'
+          x-stoplight:
+            id: oct37un9g8xnr
