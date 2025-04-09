@@ -612,7 +612,7 @@ components:
         mode:
           $ref: ./model.yaml#/components/schemas/DeviceMode
           x-stoplight:
-            id: ux3swpn8jmr4p
+            id: 0b5wwe54lsdsh
       required:
         - id
         - name
@@ -932,7 +932,7 @@ components:
         event:
           $ref: ./model.yaml#/components/schemas/DeviceEvent
           x-stoplight:
-            id: qbxkpr7ntnb7v
+            id: 9flwb7jzz3n09
         device_ids:
           type: array
           x-stoplight:
@@ -953,7 +953,7 @@ components:
         mode:
           $ref: ./model.yaml#/components/schemas/DeviceMode
           x-stoplight:
-            id: ux3swpn8jmr4p
+            id: 0b5wwe54lsdsh
         device_ids:
           type: array
           x-stoplight:
