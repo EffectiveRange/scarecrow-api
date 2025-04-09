@@ -82,7 +82,7 @@ components:
       required:
         - mode
     DeviceEventRequest:
-      title: EventRequest
+      title: DeviceEventRequest
       x-stoplight:
         id: jlhdkculrapwy
       type: object
