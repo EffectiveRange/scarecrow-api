@@ -12,8 +12,7 @@ info:
     url: 'https://www.effective-range.com'
   license:
     name: MIT
-    url: >-
-      https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE
+    url: 'https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE'
 tags:
   - name: cell
     description: Cell
@@ -405,74 +404,6 @@ paths:
         in: query
         name: token_id
         description: Token ID
-  /statistics:
-    get:
-      summary: Get statistics
-      tags:
-        - statistics
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/StatisticEntry'
-                  x-stoplight:
-                    id: kap7mhl5c8awt
-      operationId: get-statistics
-      x-stoplight:
-        id: p65m1bygukitg
-      description: Get all statistic entries
-    delete:
-      summary: Clear statistics
-      tags:
-        - statistics
-      responses:
-        '200':
-          description: OK
-      operationId: delete-statistics
-      x-stoplight:
-        id: iixz5llbh7f3c
-      description: Delete all statistic entries
-    parameters:
-      - schema:
-          type: object
-          $ref: '#/components/schemas/StatisticType'
-        in: query
-        name: type
-        description: Statistic type
-      - schema:
-          type: object
-          $ref: '#/components/schemas/StatisticSource'
-        in: query
-        name: source
-        description: Statistic source
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: device_id
-        description: Device ID
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: session_id
-        description: Session ID
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: peer_id
-        description: Peer device ID
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: token_id
-        description: Token ID
   /ansible/playbook:
     get:
       summary: Get playbooks
@@ -713,6 +644,7 @@ components:
           type: array
           x-stoplight:
             id: 05u8e758gg4jf
+          uniqueItems: true
           items:
             x-stoplight:
               id: a3h5w45gre6q4
@@ -722,6 +654,7 @@ components:
           type: array
           x-stoplight:
             id: k9pyo3tjeqcgd
+          uniqueItems: true
           items:
             x-stoplight:
               id: g1aneblvj7zth
@@ -805,6 +738,7 @@ components:
           type: array
           x-stoplight:
             id: vlo3fqlsqi801
+          uniqueItems: true
           items:
             x-stoplight:
               id: odace9utcs8rl
@@ -814,6 +748,7 @@ components:
           type: array
           x-stoplight:
             id: yopqvq0thps4f
+          uniqueItems: true
           items:
             x-stoplight:
               id: e7ctjge8xrpyn
@@ -837,12 +772,6 @@ components:
       x-stoplight:
         id: xeu39b07nmf2a
       type: object
-      required:
-        - id
-        - type
-        - timestamp
-        - message
-        - server_id
       properties:
         id:
           type: string
@@ -872,16 +801,6 @@ components:
           x-stoplight:
             id: qrt815nmp4huk
           format: uuid
-        session_id:
-          type: string
-          x-stoplight:
-            id: 4mtnvayzdyad7
-          format: uuid
-        token_id:
-          type: string
-          x-stoplight:
-            id: esnkx771aqggw
-          format: uuid
         attributes:
           type: object
           x-stoplight:
@@ -890,106 +809,12 @@ components:
             x-stoplight:
               id: pom5xlzik3pm2
             type: string
-    StatisticType:
-      title: StatisticType
-      x-stoplight:
-        id: v0yii3b8jofow
-      enum:
-        - latency
-      type: string
-    StatisticSource:
-      title: StatisticSource
-      x-stoplight:
-        id: zuk4tjaropj1q
-      enum:
-        - server
-        - device
-      type: string
-    StatisticEntry:
-      title: StatisticEntry
-      x-stoplight:
-        id: vfvkxvhjkljsi
-      type: object
       required:
         - id
         - type
-        - source
         - timestamp
-        - device_id
-        - session_id
-        - statistic
-      properties:
-        id:
-          type: string
-          x-stoplight:
-            id: bx9a3h4sn1wcq
-          format: uuid
-        type:
-          $ref: '#/components/schemas/StatisticType'
-          x-stoplight:
-            id: 00x7pwslf9eqr
-        source:
-          $ref: '#/components/schemas/StatisticSource'
-          x-stoplight:
-            id: qej20l0zl82bt
-        timestamp:
-          type: string
-          x-stoplight:
-            id: tt80z9w49vjik
-          format: date-time
-        device_id:
-          type: string
-          x-stoplight:
-            id: wj6ctsrmfbuu8
-          format: uuid
-        session_id:
-          type: string
-          x-stoplight:
-            id: 5gmif6kvsghex
-          format: uuid
-        statistic:
-          x-stoplight:
-            id: 3izyuf35a9rx9
-          oneOf:
-            - $ref: '#/components/schemas/Latency'
-              x-stoplight:
-                id: 55r1ysjyjfx5t
-          discriminator:
-            propertyName: type
-            mapping:
-              latency: '#/components/schemas/Latency'
-    Latency:
-      title: Latency
-      x-stoplight:
-        id: q1473mjvyoncf
-      type: object
-      required:
-        - type
-        - peer_id
-        - token_id
-        - latency_us
-      properties:
-        type:
-          type: string
-          default: latency
-          x-stoplight:
-            id: xobamqeptshtq
-          readOnly: true
-        peer_id:
-          type: string
-          x-stoplight:
-            id: qegp8kt39u48v
-          format: uuid
-        token_id:
-          type: string
-          x-stoplight:
-            id: 74eezyhvwz8kk
-          format: uuid
-        latency_us:
-          type: integer
-          x-stoplight:
-            id: cfpe25mpcroqc
-          format: int64
+        - message
+        - server_id
     Playbook:
       title: Playbook
       x-stoplight:

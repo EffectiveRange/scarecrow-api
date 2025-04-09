@@ -1,6 +1,6 @@
 openapi: 3.1.0
 x-stoplight:
-  id: nkfe0t78djhoi
+  id: jfs06bc2eocxk
 info:
   version: 0.1.0
   title: Device API
@@ -36,19 +36,19 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: 01dewxhc5cwwt
+                  id: il1ogzb1xevrp
       operationId: set-mode
       x-stoplight:
-        id: umjcufk8uum7c
+        id: kuqxh4q4g4pes
       description: Set operation mode
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              $ref: ./model.yaml#/components/schemas/DeviceEventRequest
+              $ref: ./model.yaml#/components/schemas/DeviceModeRequest
               x-stoplight:
-                id: oct37un9g8xnr
+                id: urb7rfycr2nwm
   /device/event:
     post:
       summary: Trigger event
@@ -65,19 +65,19 @@ paths:
                 type: object
                 $ref: ./model.yaml#/components/schemas/Error
                 x-stoplight:
-                  id: 01dewxhc5cwwt
+                  id: il1ogzb1xevrp
       operationId: trigger-event
       x-stoplight:
-        id: bctc6k9q8hjti
+        id: 2g5wsmpb303i5
       description: Trigger event on device
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              $ref: ./model.yaml#/components/schemas/DeviceModeRequest
+              $ref: ./model.yaml#/components/schemas/DeviceEventRequest
               x-stoplight:
-                id: re1r4q54uei20
+                id: jlhdkculrapwy
   /health/alive:
     $ref: ./health.yaml#/paths/~1health~1alive
   /health/status:

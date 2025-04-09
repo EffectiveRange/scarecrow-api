@@ -34,6 +34,7 @@ components:
         - local_error
         - invalid_state
       default: unknown
+      type: string
     Error:
       title: Error
       x-stoplight:
@@ -68,18 +69,6 @@ components:
         - bang
       default: buzz
       type: string
-    DeviceEventRequest:
-      title: EventRequest
-      x-stoplight:
-        id: csbgt4ne5mxxs
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/DeviceEvent'
-          x-stoplight:
-            id: eqk1r4752syzp
-      required:
-        - event
     DeviceModeRequest:
       title: DeviceModeRequest
       x-stoplight:
@@ -92,3 +81,15 @@ components:
             id: 0b5wwe54lsdsh
       required:
         - mode
+    DeviceEventRequest:
+      title: EventRequest
+      x-stoplight:
+        id: jlhdkculrapwy
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/DeviceEvent'
+          x-stoplight:
+            id: 9flwb7jzz3n09
+      required:
+        - event
