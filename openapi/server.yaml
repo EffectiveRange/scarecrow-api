@@ -937,6 +937,7 @@ components:
           type: array
           x-stoplight:
             id: r391a7ri9hd3i
+          uniqueItems: true
           items:
             x-stoplight:
               id: kwx2ddj7l3ahc
@@ -958,6 +959,7 @@ components:
           type: array
           x-stoplight:
             id: pa1rigjn0hij0
+          uniqueItems: true
           items:
             x-stoplight:
               id: a7tio12wrso9h
