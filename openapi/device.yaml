@@ -46,9 +46,9 @@ paths:
           application/json:
             schema:
               type: object
-              $ref: ./model.yaml#/components/schemas/DeviceEventRequest
+              $ref: ./model.yaml#/components/schemas/DeviceModeRequest
               x-stoplight:
-                id: urb7rfycr2nwm
+                id: jlhdkculrapwy
   /device/event:
     post:
       summary: Trigger event
@@ -75,9 +75,9 @@ paths:
           application/json:
             schema:
               type: object
-              $ref: ./model.yaml#/components/schemas/DeviceModeRequest
+              $ref: ./model.yaml#/components/schemas/DeviceEventRequest
               x-stoplight:
-                id: jlhdkculrapwy
+                id: urb7rfycr2nwm
   /health/alive:
     $ref: ./health.yaml#/paths/~1health~1alive
   /health/status:
