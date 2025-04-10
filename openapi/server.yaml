@@ -759,6 +759,7 @@ components:
         id: anb6nwjhrn1li
       enum:
         - server
+        - cell
         - device
       type: string
     DiagnosticEntry:
