@@ -12,8 +12,7 @@ info:
     url: 'https://www.effective-range.com'
   license:
     name: MIT
-    url: >-
-      https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE
+    url: 'https://raw.githubusercontent.com/EffectiveRange/scarecrow-api/refs/heads/main/LICENSE'
 tags:
   - name: common
     description: Common model
@@ -57,7 +56,7 @@ components:
         id: ryya533rqjaqp
       enum:
         - manual
-        - auto
+        - automatic
       default: manual
       type: string
     DeviceEvent:
