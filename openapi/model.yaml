@@ -27,7 +27,6 @@ components:
         - unknown
         - unreachable
         - status_expired
-        - no_session
         - invalid_argument
         - internal_error
         - local_error

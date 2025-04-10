@@ -706,10 +706,6 @@ components:
           type: string
           x-stoplight:
             id: ixdpsz2mykeds
-        type:
-          type: string
-          x-stoplight:
-            id: bknuifvu4qyj0
         role:
           $ref: '#/components/schemas/DeviceRole'
           x-stoplight:
