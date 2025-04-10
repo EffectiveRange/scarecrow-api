@@ -390,20 +390,14 @@ paths:
           type: string
           format: uuid
         in: query
+        name: cell_id
+        description: Cell ID
+      - schema:
+          type: string
+          format: uuid
+        in: query
         name: device_id
         description: Device ID
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: session_id
-        description: Session ID
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: token_id
-        description: Token ID
   /ansible/playbook:
     get:
       summary: Get playbooks
