@@ -145,9 +145,9 @@ paths:
           description: Accepted
         '404':
           description: Not Found
-      operationId: set-mode
-      summary: Set mode
-      description: Set operation mode
+      operationId: set-device-mode
+      summary: Set device mode
+      description: Set device operation mode
       tags:
         - device
       x-stoplight:
@@ -172,8 +172,8 @@ paths:
           description: Accepted
         '404':
           description: Not Found
-      operationId: trigger-event
-      summary: Trigger event
+      operationId: trigger-device-event
+      summary: Trigger device event
       description: Trigger event on device
       tags:
         - device
@@ -317,7 +317,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CellModeRequest'
-  '/cell/{id}/bang':
+  '/cell/{id}/event':
     parameters:
       - schema:
           type: string
@@ -327,16 +327,16 @@ paths:
         required: true
         description: Cell ID
     post:
-      summary: Bang cell
+      summary: Trigger cell event
       tags:
         - cell
       responses:
         '200':
           description: OK
-      operationId: bang-on-cell
+      operationId: trigger-cell-event
       x-stoplight:
         id: sw1qikls79ath
-      description: Initiate bang on cell
+      description: Trigger event on cell
       requestBody:
         content:
           application/json:
