@@ -37,7 +37,7 @@ message HealthRequest {Component component = 1;}
 
 enum DeviceMode {
   MANUAL = 0;
-  AUTO = 1;
+  AUTOMATIC = 1;
 }
 
 message ModeRequest {DeviceMode mode = 1;}
