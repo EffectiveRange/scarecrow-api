@@ -368,6 +368,8 @@ paths:
         required: true
       - schema:
           $ref: ./model.yaml#/components/schemas/DeviceMode
+          x-stoplight:
+            id: 77o02qqloix1d
         name: mode
         in: path
         required: true
@@ -417,6 +419,8 @@ paths:
         required: true
       - schema:
           $ref: ./model.yaml#/components/schemas/DeviceEvent
+          x-stoplight:
+          id: q1u8vpievhtoj
         name: event
         in: path
         required: true
