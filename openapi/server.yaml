@@ -382,8 +382,6 @@ paths:
       x-stoplight:
         id: 72ps4ov1klr1k
       description: Set cell operation mode
-      requestBody:
-        content: {}
   '/cell/{id}/event':
     parameters:
       - schema:
@@ -433,8 +431,6 @@ paths:
       x-stoplight:
         id: sw1qikls79ath
       description: Trigger event on cell
-      requestBody:
-        content: {}
   /diagnostics:
     get:
       summary: Get diagnostics
