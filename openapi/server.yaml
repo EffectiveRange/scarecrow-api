@@ -292,6 +292,47 @@ paths:
       description: Delete a cell by ID
       x-stoplight:
         id: mipkdtsr6k6l8
+  '/cell/index/{index}':
+    parameters:
+      - schema:
+          type: integer
+          minimum: 1
+        name: index
+        in: path
+        required: true
+    get:
+      summary: Get cell
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Cell'
+                x-stoplight:
+                  id: njub0cr1cdkbp
+        '404':
+          description: Not Found
+      operationId: get-cell-by-index
+      description: Get a cell by index
+      x-stoplight:
+        id: 95i99czjlwiwm
+    delete:
+      summary: Delete cell
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: delete-cell-by-index
+      description: Delete a cell by index
+      x-stoplight:
+        id: mipkdtsr6k6l8
   '/cell/{id}/mode':
     parameters:
       - schema:
@@ -317,6 +358,32 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CellModeRequest'
+  '/cell/index/{index}/mode/{mode}':
+    parameters:
+      - schema:
+          type: integer
+          minimum: 1
+        name: index
+        in: path
+        required: true
+      - schema:
+          $ref: ./model.yaml#/components/schemas/DeviceMode
+        name: mode
+        in: path
+        required: true
+    post:
+      summary: Set cell mode
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+      operationId: set-cell-mode-by-index
+      x-stoplight:
+        id: 72ps4ov1klr1k
+      description: Set cell operation mode
+      requestBody:
+        content: {}
   '/cell/{id}/event':
     parameters:
       - schema:
@@ -342,6 +409,32 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CellEventRequest'
+  '/cell/index/{index}/event/{event}':
+    parameters:
+      - schema:
+          type: integer
+          minimum: 1
+        name: index
+        in: path
+        required: true
+      - schema:
+          $ref: ./model.yaml#/components/schemas/DeviceEvent
+        name: event
+        in: path
+        required: true
+    post:
+      summary: Trigger cell event
+      tags:
+        - cell
+      responses:
+        '200':
+          description: OK
+      operationId: trigger-cell-event-by-index
+      x-stoplight:
+        id: sw1qikls79ath
+      description: Trigger event on cell
+      requestBody:
+        content: {}
   /diagnostics:
     get:
       summary: Get diagnostics
@@ -626,6 +719,11 @@ components:
           x-stoplight:
             id: ypogii6rvz4sr
           format: uuid
+        index:
+          type: integer
+          x-stoplight:
+            id: uk7u9ngfy8bhv
+          minimum: 1
         name:
           type: string
           x-stoplight:
@@ -656,6 +754,7 @@ components:
             format: uuid
       required:
         - id
+        - index
         - name
         - description
         - cannon_ids
@@ -716,6 +815,11 @@ components:
         id: 2zqwbr862586t
       type: object
       properties:
+        index:
+          type: integer
+          x-stoplight:
+            id: 7kco01so42rjh
+          minimum: 1
         name:
           type: string
           x-stoplight:
@@ -745,6 +849,7 @@ components:
             type: string
             format: uuid
       required:
+        - index
         - name
         - description
         - cannon_ids
