@@ -708,57 +708,6 @@ components:
         - role
         - status
         - mode
-    Cell:
-      title: Cell
-      type: object
-      x-stoplight:
-        id: r5cac44rnkx8g
-      properties:
-        id:
-          type: string
-          x-stoplight:
-            id: ypogii6rvz4sr
-          format: uuid
-        index:
-          type: integer
-          x-stoplight:
-            id: uk7u9ngfy8bhv
-          minimum: 1
-        name:
-          type: string
-          x-stoplight:
-            id: cmxt8fg573jvq
-        description:
-          type: string
-          x-stoplight:
-            id: viihfcf1uoh7a
-        cannon_ids:
-          type: array
-          x-stoplight:
-            id: 05u8e758gg4jf
-          uniqueItems: true
-          items:
-            x-stoplight:
-              id: a3h5w45gre6q4
-            type: string
-            format: uuid
-        camera_ids:
-          type: array
-          x-stoplight:
-            id: k9pyo3tjeqcgd
-          uniqueItems: true
-          items:
-            x-stoplight:
-              id: g1aneblvj7zth
-            type: string
-            format: uuid
-      required:
-        - id
-        - index
-        - name
-        - description
-        - cannon_ids
-        - camera_ids
     NewDevice:
       title: NewDevice
       x-stoplight:
@@ -809,6 +758,63 @@ components:
           $ref: '#/components/schemas/DeviceRole'
           x-stoplight:
             id: oo50iss0jkl2j
+    Cell:
+      title: Cell
+      type: object
+      x-stoplight:
+        id: r5cac44rnkx8g
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: ypogii6rvz4sr
+          format: uuid
+        index:
+          type: integer
+          x-stoplight:
+            id: uk7u9ngfy8bhv
+          minimum: 1
+        name:
+          type: string
+          x-stoplight:
+            id: cmxt8fg573jvq
+        description:
+          type: string
+          x-stoplight:
+            id: viihfcf1uoh7a
+        address:
+          type: string
+          x-stoplight:
+            id: m8gcv3a0y0zte
+          format: ipv4
+        cannon_ids:
+          type: array
+          x-stoplight:
+            id: 05u8e758gg4jf
+          uniqueItems: true
+          items:
+            x-stoplight:
+              id: a3h5w45gre6q4
+            type: string
+            format: uuid
+        camera_ids:
+          type: array
+          x-stoplight:
+            id: k9pyo3tjeqcgd
+          uniqueItems: true
+          items:
+            x-stoplight:
+              id: g1aneblvj7zth
+            type: string
+            format: uuid
+      required:
+        - id
+        - index
+        - name
+        - description
+        - address
+        - cannon_ids
+        - camera_ids
     NewCell:
       title: NewCell
       x-stoplight:
@@ -828,6 +834,11 @@ components:
           type: string
           x-stoplight:
             id: j76ozutxmi0f8
+        address:
+          type: string
+          x-stoplight:
+            id: fta2nkvsbu6ug
+          format: ipv4
         cannon_ids:
           type: array
           x-stoplight:
@@ -852,8 +863,53 @@ components:
         - index
         - name
         - description
+        - address
         - cannon_ids
         - camera_ids
+    CellEventRequest:
+      title: CellEventRequest
+      x-stoplight:
+        id: hzv3wtk5t1nv9
+      type: object
+      properties:
+        event:
+          $ref: ./model.yaml#/components/schemas/DeviceEvent
+          x-stoplight:
+            id: 9flwb7jzz3n09
+        device_ids:
+          type: array
+          x-stoplight:
+            id: r391a7ri9hd3i
+          uniqueItems: true
+          items:
+            x-stoplight:
+              id: kwx2ddj7l3ahc
+            type: string
+            format: uuid
+      required:
+        - event
+    CellModeRequest:
+      title: CellModeRequest
+      x-stoplight:
+        id: 7m69xwofnr9mz
+      type: object
+      properties:
+        mode:
+          $ref: ./model.yaml#/components/schemas/DeviceMode
+          x-stoplight:
+            id: 0b5wwe54lsdsh
+        device_ids:
+          type: array
+          x-stoplight:
+            id: pa1rigjn0hij0
+          uniqueItems: true
+          items:
+            x-stoplight:
+              id: a7tio12wrso9h
+            type: string
+            format: uuid
+      required:
+        - mode
     DiagnosticType:
       title: DiagnosticType
       x-stoplight:
@@ -1019,47 +1075,3 @@ components:
             x-stoplight:
               id: ylhz5k3kv9b8p
             type: string
-    CellEventRequest:
-      title: CellEventRequest
-      x-stoplight:
-        id: hzv3wtk5t1nv9
-      type: object
-      properties:
-        event:
-          $ref: ./model.yaml#/components/schemas/DeviceEvent
-          x-stoplight:
-            id: 9flwb7jzz3n09
-        device_ids:
-          type: array
-          x-stoplight:
-            id: r391a7ri9hd3i
-          uniqueItems: true
-          items:
-            x-stoplight:
-              id: kwx2ddj7l3ahc
-            type: string
-            format: uuid
-      required:
-        - event
-    CellModeRequest:
-      title: CellModeRequest
-      x-stoplight:
-        id: 7m69xwofnr9mz
-      type: object
-      properties:
-        mode:
-          $ref: ./model.yaml#/components/schemas/DeviceMode
-          x-stoplight:
-            id: 0b5wwe54lsdsh
-        device_ids:
-          type: array
-          x-stoplight:
-            id: pa1rigjn0hij0
-          uniqueItems: true
-          items:
-            x-stoplight:
-              id: a7tio12wrso9h
-            type: string
-            format: uuid
-      required:
-        - mode
