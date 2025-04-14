@@ -435,62 +435,6 @@ paths:
       x-stoplight:
         id: sw1qikls79ath
       description: Trigger event on cell
-  /diagnostics:
-    get:
-      summary: Get diagnostics
-      tags:
-        - diagnostics
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DiagnosticEntry'
-                  x-stoplight:
-                    id: y4a4y0vvv72xt
-      operationId: get-diagnostics
-      x-stoplight:
-        id: kmer8az9s7nt6
-      description: Get all diagnostic entries
-    delete:
-      summary: Clear diagnostics
-      tags:
-        - diagnostics
-      responses:
-        '200':
-          description: OK
-      operationId: clear-diagnostics
-      x-stoplight:
-        id: 0641z6qzvsan9
-      description: Delete all diagnostic entries
-    parameters:
-      - schema:
-          type: object
-          $ref: '#/components/schemas/DiagnosticType'
-        in: query
-        name: type
-        description: Diagnostic type
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: server_id
-        description: Server ID
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: cell_id
-        description: Cell ID
-      - schema:
-          type: string
-          format: uuid
-        in: query
-        name: device_id
-        description: Device ID
   /ansible/playbook:
     get:
       summary: Get playbooks
@@ -910,63 +854,6 @@ components:
             format: uuid
       required:
         - mode
-    DiagnosticType:
-      title: DiagnosticType
-      x-stoplight:
-        id: anb6nwjhrn1li
-      enum:
-        - server
-        - cell
-        - device
-      type: string
-    DiagnosticEntry:
-      title: DiagnosticEntry
-      x-stoplight:
-        id: xeu39b07nmf2a
-      type: object
-      properties:
-        id:
-          type: string
-          x-stoplight:
-            id: 3mjy1j41bm5w5
-          format: uuid
-        type:
-          $ref: '#/components/schemas/DiagnosticType'
-          x-stoplight:
-            id: vpf6tsr5r2oi1
-        timestamp:
-          type: string
-          x-stoplight:
-            id: oqvvchqu36a5t
-          format: date-time
-        message:
-          type: string
-          x-stoplight:
-            id: ypc66e6nvqkuk
-        server_id:
-          type: string
-          x-stoplight:
-            id: nysk7aq1s2isi
-          format: uuid
-        device_id:
-          type: string
-          x-stoplight:
-            id: qrt815nmp4huk
-          format: uuid
-        attributes:
-          type: object
-          x-stoplight:
-            id: yhsxes6wi8pjm
-          additionalProperties:
-            x-stoplight:
-              id: pom5xlzik3pm2
-            type: string
-      required:
-        - id
-        - type
-        - timestamp
-        - message
-        - server_id
     Playbook:
       title: Playbook
       x-stoplight:
