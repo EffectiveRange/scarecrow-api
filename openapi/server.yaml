@@ -531,7 +531,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RunResponse'
+                type: array
+                items:
+                  $ref: '#/components/schemas/RunResponse'
+                  x-stoplight:
+                    id: xhr4s2w62p17l
         '400':
           description: Bad Request
         '404':
@@ -906,7 +910,16 @@ components:
         id: ztwolobuck6ch
       type: object
       properties:
-        devices:
+        cell_ids:
+          type: array
+          x-stoplight:
+            id: o52oi9qar3ehx
+          items:
+            x-stoplight:
+              id: 3l0oldvfldja0
+            type: string
+            format: uuid
+        device_ids:
           type: array
           x-stoplight:
             id: j12jla4c5jl0c
@@ -936,11 +949,12 @@ components:
       x-stoplight:
         id: 3zntb3cfe8onf
       type: object
-      required:
-        - hosts
-        - exit_code
-        - output_lines
       properties:
+        cell_id:
+          type: string
+          x-stoplight:
+            id: 03mvr5tvqzgai
+          format: uuid
         hosts:
           type: array
           x-stoplight:
@@ -962,3 +976,8 @@ components:
             x-stoplight:
               id: ylhz5k3kv9b8p
             type: string
+      required:
+        - cell_id
+        - hosts
+        - exit_code
+        - output_lines
