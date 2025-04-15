@@ -735,7 +735,7 @@ components:
           x-stoplight:
             id: m8gcv3a0y0zte
           format: ipv4
-        cannon_ids:
+        device_ids:
           type: array
           x-stoplight:
             id: 05u8e758gg4jf
@@ -745,24 +745,13 @@ components:
               id: a3h5w45gre6q4
             type: string
             format: uuid
-        camera_ids:
-          type: array
-          x-stoplight:
-            id: k9pyo3tjeqcgd
-          uniqueItems: true
-          items:
-            x-stoplight:
-              id: g1aneblvj7zth
-            type: string
-            format: uuid
       required:
         - id
         - index
         - name
         - description
         - address
-        - cannon_ids
-        - camera_ids
+        - device_ids
     NewCell:
       title: NewCell
       x-stoplight:
@@ -787,7 +776,7 @@ components:
           x-stoplight:
             id: fta2nkvsbu6ug
           format: ipv4
-        cannon_ids:
+        device_ids:
           type: array
           x-stoplight:
             id: vlo3fqlsqi801
@@ -797,23 +786,12 @@ components:
               id: odace9utcs8rl
             type: string
             format: uuid
-        camera_ids:
-          type: array
-          x-stoplight:
-            id: yopqvq0thps4f
-          uniqueItems: true
-          items:
-            x-stoplight:
-              id: e7ctjge8xrpyn
-            type: string
-            format: uuid
       required:
         - index
         - name
         - description
         - address
-        - cannon_ids
-        - camera_ids
+        - device_ids
     CellEventRequest:
       title: CellEventRequest
       x-stoplight:
